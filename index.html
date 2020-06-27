@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Animal Smart Info</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="login_div" class="main-div">
+    <img src="zoomelaka.jpg" style="width:100%">
+    <h3>Animal Smart Info Login</h3>
+    <input type="email" placeholder="Insert ID" id="email_field"/>
+    <input type="password" placeholder="Insert PIN" id="password_field"/>
+
+    <button onclick="login()">Login to Account</button>
+  </div>
+
+  <div id="user_div" class="loggedin-div">
+    <img src="zoomelaka.jpg" style="width:100%">
+  <div class="header">
+    <h1>Animal Smart Info</h1>
+  </div>
+  <div class="header2">
+    <p>Pilih Bahasa | 选择语言 | Select Language</p>
+  </div>
+    <a href="malaypage1.html">
+      <img src="malay.png" alt="Select Malay" style="width:200px; height:200px">
+    </a>
+    <a href="mandarinpage1.html">
+        <img src="mandarin.png" alt="Select Mandarin" style="width:200px; height:200px">
+    </a>
+    <a href="englishpage1.html">
+        <img src="english.png" alt="Select English" style="width:200px; height:200px">
+    </a>
+    <img src="guy.png" style="width:350px;height:350px;border:0">
+  <div class="header">
+    <p>astarsenterprise@gmail.com</p>
+  </div>
+    <h3>Welcome</h3>
+    <p id="user_para">Welcome to Animal Smart Info. You're currently logged in.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+	var config = {
+    apiKey: "AIzaSyDzo9zICH-vsUSQF4_TEPT3k4RufJj9qT8",
+    authDomain: "demo2-19030.firebaseapp.com",
+    databaseURL: "https://demo2-19030.firebaseio.com",
+    projectId: "demo2-19030",
+    storageBucket: "demo2-19030.appspot.com",
+    messagingSenderId: "518805282901",
+  	};
+    firebase.initializeApp(config);
+  </script>
+  <script src="index.js"></script>
+
+</body>
+</html>
