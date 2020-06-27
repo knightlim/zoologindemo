@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>Animal Smart Info</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="login_div" class="main-div">
+    <img src="zoomelaka.jpg" style="width:100%">
+    <h3>Animal Smart Info Login</h3>
+    <input type="email" placeholder="Insert ID" id="email_field"/>
+    <input type="password" placeholder="Insert PIN" id="password_field"/>
+
+    <button onclick="login()">Login to Account</button>
+  </div>
+
+  <div id="user_div" class="loggedin-div">
+    <img src="zoomelaka.jpg" style="width:100%">
+  <div class="header">
+    <h1>Animal Smart Info</h1>
+  </div>
+  <div class="header2">
+    <p>Pilih Bahasa | 选择语言 | Select Language</p>
+  </div>
+    <a href="malaypage1.html">
+      <img src="malay.png" alt="Select Malay" style="width:200px; height:200px">
+    </a>
+    <a href="mandarinpage1.html">
+        <img src="mandarin.png" alt="Select Mandarin" style="width:200px; height:200px">
+    </a>
+    <a href="englishpage1.html">
+        <img src="english.png" alt="Select English" style="width:200px; height:200px">
+    </a>
+    <img src="guy.png" style="width:350px;height:350px;border:0">
+  <div class="header">
+    <p>astarsenterprise@gmail.com</p>
+  </div>
+  <script>
+    fetch("//us-central1-mydemo-ad0cf.cloudfunctions.net/hitCounter")
+  </script>
+    <h3>Welcome</h3>
+    <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+	  apiKey: "AIzaSyAJ_vBr6hWvnwKDCfXGEtQisjqiiWMPZco",
+	  authDomain: "mydemo-ad0cf.firebaseapp.com",
+	  databaseURL: "https://mydemo-ad0cf.firebaseio.com",
+	  projectId: "mydemo-ad0cf",
+	  storageBucket: "mydemo-ad0cf.appspot.com",
+	  messagingSenderId: "316040340861",
+	};
+    firebase.initializeApp(config);
+  </script>
+  <script src="index.js"></script>
+
+</body>
+</html>
