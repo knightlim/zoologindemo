@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.column img {
+  margin-top: 12px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pagination {
+  display: inline-block;
+  display: table;
+  margin-top: 50px;
+  margin-left:auto; margin-right: auto;
+  font-size: 60px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+<body>
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <a href="malay/meerkat.html">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mydemo-ad0cf.appspot.com/o/animal%2Fmeerkat.jpg?alt=media&token=d9aa01bb-e724-46f0-8da6-df157a3d4d1a" style="width:100%">
+    </a>
+    <a href="malay/scarletmacaw.html">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mydemo-ad0cf.appspot.com/o/animal%2FScarlet%20Macaw.jpg?alt=media&token=9cc5a850-ae4c-4057-91d3-c4b2c94321a7" style="width:100%">
+    </a>
+    <a href="malay/kurasulcata.html">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mydemo-ad0cf.appspot.com/o/animal%2Fkurasulcata.jpg?alt=media&token=1a568e0e-148d-422a-b18f-096fd4b646f0" style="width:100%">
+    </a>
+  </div>
+  <div class="column">
+    <a href="malay/badakputih.html">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mydemo-ad0cf.appspot.com/o/animal%2Fbadakputih.jpg?alt=media&token=ee05ff04-b1d0-4a5e-9011-6380bbdb30d2" style="width:100%">
+    </a>
+    <a href="malay/kafuelechwe.html">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mydemo-ad0cf.appspot.com/o/animal%2Fkafuelechwe.jpg?alt=media&token=b22cf1a1-7960-49f0-b5bf-cf46d31eac72" style="width:100%">
+    </a>
+    <a href="malay/rusasambar.html">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mydemo-ad0cf.appspot.com/o/animal%2Fsambardeer.jpg?alt=media&token=07d15a67-ede9-4861-8514-ba0405127191" style="width:100%">
+    </a>
+  </div>
+</div>
+<div class="pagination">
+  <a href="index.html">&laquo;</a>
+  <a href="index.html">H</a>
+  <a href="#" class="active">1</a>
+  <a href="malaypage2.html">2</a>
+  <a href="malaypage3.html">3</a>
+  <a href="malaypage4.html">4</a>
+  <a href="malaypage5.html">5</a>
+  <a href="malaypage2.html">&raquo;</a>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+	var config = {
+    apiKey: "AIzaSyDzo9zICH-vsUSQF4_TEPT3k4RufJj9qT8",
+    authDomain: "demo2-19030.firebaseapp.com",
+    databaseURL: "https://demo2-19030.firebaseio.com",
+    projectId: "demo2-19030",
+    storageBucket: "demo2-19030.appspot.com",
+    messagingSenderId: "518805282901",
+    appId: "1:518805282901:web:7cd43fbd873808a08cf4dc",
+    measurementId: "G-9DLFQEYHP3"
+  	};
+    firebase.initializeApp(config);
+  </script>
+  <script src="page.js"></script>
+  <script>checkUser();</script>
+</body>
+</html>
