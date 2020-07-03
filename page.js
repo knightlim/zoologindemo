@@ -1,39 +1,37 @@
 var db = firebase.firestore();
-var timeNow = Date.now();
 
 function checkUser(){
 	console.log("Checking User");
-	firebase.auth().onAuthStateChanged(function(user) {
-	console.log("Checking User 2");	
-	  if (user) {
-	  console.log("Checking User 3");
-	    var user = firebase.auth().currentUser;
-	    console.log("Logged in.");
-		if(user != null){
-	      	var email_id = user.email;
-	      	var docRef = db.collection("UserLogin").doc(email_id);
-	      	docRef.get().then(function(doc) {	
-		    if (doc.exists) {
-		    	//Check whether more than 24 hours.
-		    	var timeDifference = 1;
-		 		timeDifference = Date.now() - doc.data().loginTime;
-		 		if(timeDifference >= 86400){
-		 			logout();
-		 		}
-		    } 
-			}).catch(function(error) {
-			console.log("Error getting document:", error);
-			});
-	    }
-
+  	var userEmail = localStorage.getItem("useremail");
+  	
+	  if (userEmail != null) {
+	  	console.log("Checking User");
+      	var docRef = db.collection("UserLogin").doc(userEmail);
+      	docRef.get().then(function(doc) {	
+	    if (doc.exists) {
+	    console.log("Check Time.");
+	    	//Check whether more than 24 hours.
+	    	var timeDifference = 1;
+	    	var timeNow = Date.now();
+	 		timeDifference = timeNow - doc.data().loginTime;
+	 		console.log("Duration: ", timeDifference);
+	 		if(timeDifference >= 54000000){
+	 			console.log("Timeout logout");
+	 			logout();
+	 		}
+	    } 
+		}).catch(function(error) {
+		console.log("Error getting document:", error);
+		});
 	  }
 	  else{
-	  	location.href = 'index.html';
+		  	//Not login user redirect to login page
+		  	location.href = '/index.html';
 	  }
-	});
 }
 
 function logout(){
-  firebase.auth().signOut();
-  location.href = 'index.html';
+	localStorage.clear();
+  	firebase.auth().signOut();
+  	location.href = '/index.html';
 }

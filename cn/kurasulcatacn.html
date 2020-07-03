@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../player/progres-bar.css">
+<style>
+	img {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  margin-top: 100px;
+	  margin-bottom: 100px;
+}
+	audio { 
+	  width: 900px; 
+	  box-shadow: 5px 5px 20px rgba(0,0, 0, 0.4);
+	  border-radius: 90px;
+	  transform: scale(1.05);
+}
+ .mediPlayer {  display: table; margin-left:auto; margin-right: auto;}
+</style>
+<img src="https://firebasestorage.googleapis.com/v0/b/demo2-19030.appspot.com/o/animalgif%2Fkurakurasulcata.gif?alt=media&token=34ed86c8-227b-4b3f-8a05-073f53fa8a25" style="width:100%">
+<!-- Media Player-->
+	<div class="mediPlayer">
+	    <audio class="listen" preload="none" data-size="250" src="https://firebasestorage.googleapis.com/v0/b/demo2-19030.appspot.com/o/zoorecording%2Fkurasulcata%2F001_KurakuraSulcataCn.mp3?alt=media&token=1419d134-a80e-48b6-b65d-c3e10a4a4401"></audio>
+	</div>
+<!-- Media Player / -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="../player/player.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.mediPlayer').mediaPlayer();
+    });
+</script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+	var config = {
+    apiKey: "AIzaSyDzo9zICH-vsUSQF4_TEPT3k4RufJj9qT8",
+    authDomain: "demo2-19030.firebaseapp.com",
+    databaseURL: "https://demo2-19030.firebaseio.com",
+    projectId: "demo2-19030",
+    storageBucket: "demo2-19030.appspot.com",
+    messagingSenderId: "518805282901",
+    appId: "1:518805282901:web:7cd43fbd873808a08cf4dc",
+    measurementId: "G-9DLFQEYHP3"
+  	};
+    firebase.initializeApp(config);
+  </script>
+  <script src="../page.js"></script>
+  <script>checkUser();</script>
+
+</html>
+
+
+
+
