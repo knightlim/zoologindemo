@@ -2,7 +2,7 @@ var db = firebase.firestore();
 
 function checkUser(){
 	console.log("Checking User");
-  	var userEmail = localStorage.getItem("useremail");
+  	var userEmail = sessionStorage.getItem("useremail");
   	
 	  if (userEmail != null) {
 	  	console.log("Checking User");
@@ -15,10 +15,14 @@ function checkUser(){
 	    	var timeNow = Date.now();
 	 		timeDifference = timeNow - doc.data().loginTime;
 	 		console.log("Duration: ", timeDifference);
-	 		if(timeDifference >= 54000000){
+	 		//Timeout is 6 hours
+	 		if(timeDifference >= 21600000){
 	 			console.log("Timeout logout");
 	 			logout();
 	 		}
+	    }
+	    else{
+	    	logout();
 	    } 
 		}).catch(function(error) {
 		console.log("Error getting document:", error);
@@ -31,7 +35,7 @@ function checkUser(){
 }
 
 function logout(){
-	localStorage.clear();
+	sessionStorage.clear();
   	firebase.auth().signOut();
   	location.href = '/index.html';
 }

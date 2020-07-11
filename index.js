@@ -1,6 +1,7 @@
 
 var timeNow = Date.now();
 
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     var user = firebase.auth().currentUser;
@@ -20,25 +21,35 @@ firebase.auth().onAuthStateChanged(function(user) {
 	    	timeNow = Date.now();
 	 		timeDifference = timeNow - doc.data().loginTime;
 	 		console.log("Duration: ", timeDifference);
-	 		//Timeout is 15 hours
-	 		if(timeDifference >= 54000000){
+	 		//Timeout is 6 hours
+	 		if(timeDifference >= 21600000){
 	 			console.log("Timeout logout");
 	 			logout();
 	 		}
 	    } 
 	    else {
 	    	var login_time = Date.now();
-	      	db.collection("UserLogin").doc(email_id).set({
-	      	userID: email_id,
-		  	loginTime: login_time,
-		  	loginOnce : 1
-	      	})
-	      	.then(function() {
-	          	console.log("Logged in.");
-	      	})
-	      	.catch(function(error) {
-	          	console.error("Error writing document: ", error);
-	      	});
+	    	var timeDifference = 1;
+	    	timeNow = Date.now();
+	    	var userTime = sessionStorage.getItem("usertime");
+	    	timeDifference = timeNow - userTime;
+	    	if(timeDifference >= 21600000){
+	    		console.log("Timeout logout");
+	 			logout();
+	    	}
+	    	else{
+	    		db.collection("UserLogin").doc(email_id).set({
+		      	userID: email_id,
+			  	loginTime: login_time,
+			  	loginOnce : 1
+		      	})
+		      	.then(function() {
+		          	console.log("Logged in.");
+		      	})
+		      	.catch(function(error) {
+		          	console.error("Error writing document: ", error);
+		      	});
+	    	}
 	    }
 		}).catch(function(error) {
 		console.log("Error getting document:", error);
@@ -59,8 +70,10 @@ function login(){
   var db = firebase.firestore();
   var userEmail = document.getElementById("email_field").value;
   var userPass = document.getElementById("password_field").value;
-  localStorage.setItem("useremail", userEmail);
-  localStorage.setItem("userpassword", userPass);
+  var userTime = Date.now();
+  sessionStorage.setItem("useremail", userEmail);
+  sessionStorage.setItem("userpassword", userPass);
+  sessionStorage.setItem("usertime", userTime);
   var docRef = db.collection("UserLogin").doc(userEmail);
   var timeDifference = 1;
   var loginBefore = 0;
@@ -73,8 +86,8 @@ function login(){
 			loginBefore = doc.data().loginOnce;
 			console.log("timeDifference: ", timeDifference);
 			console.log("loginBefore: ", loginBefore);
-			//Timeout is 15 hours
-			if(timeDifference >= 54000000  || loginBefore == 1){
+			//Timeout is 6 hours
+			if(timeDifference >= 21600000  || loginBefore == 1){
 				console.log("Login more than 24 hours or login before.")	
 			}
 			else{
@@ -120,7 +133,8 @@ function login(){
 }
 
 function logout(){
-	localStorage.clear();
+	sessionStorage.clear();
   	firebase.auth().signOut();
   	location.href = '/index.html';
 }
+
